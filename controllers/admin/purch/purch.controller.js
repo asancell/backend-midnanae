@@ -1,15 +1,15 @@
 
-const db = require('../../lib/db.js');
+const db = require('../../../lib/db.js');
 
 
 // CREATE type product
 module.exports.create = function (req, res) {
-    const {employee_id, status, total_price} = req.body;
+    const {employee_id, address, status, total_price} = req.body;
 
     try {
         db.query(
-            "INSERT INTO order_product (employee_id, date, status, total_price) VALUES(?, ?, ?, ?)",
-            [employee_id, Date.now(), status, total_price ],
+            "INSERT INTO order_product (employee_id, address, date, status, total_price) VALUES(?, ?, ?, ?, ?)",
+            [employee_id, address, Date.now(), status, total_price ],
             (err, results, fields) => {
                 if (err) {
                     console.log("Error while inserting a purch order product into the database", err);
@@ -38,12 +38,12 @@ module.exports.read = function (req, res) {
 }
 
 module.exports.update = function (req, res){
-    const order_product_id = req.params.wst_product_id;
-    const {employee_id, status, total_price } = req.body;
+    const order_product_id = req.params.order_product_id;
+    const {employee_id, address, status, total_price } = req.body;
 
     try {
-        db.query("UPDATE order_product SET employee_id = ?, date = ? , status = ?, total_price = ? WHERE order_product_id = ?", 
-        [employee_id, Date.now(), status, total_price, order_product_id], (err, results, fields) => {
+        db.query("UPDATE order_product SET employee_id = ?, address = ? , date = ? , status = ?, total_price = ? WHERE order_product_id = ?", 
+        [employee_id, address, Date.now(), status, total_price, order_product_id], (err, results, fields) => {
             if (err) {
                 console.log(err);
                 return res.status(400).send();
@@ -57,7 +57,7 @@ module.exports.update = function (req, res){
 }
 
 module.exports.delete = function (req, res){
-    const order_product_id = req.params.wst_product_id;
+    const order_product_id = req.params.order_product_id;
 
     try {
         db.query("DELETE FROM order_product WHERE order_product_id = ?", [order_product_id], (err, results, fields) => {

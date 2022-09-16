@@ -1,5 +1,5 @@
 
-const db = require('../../lib/db.js');
+const db = require('../../../lib/db.js');
 
 
 // CREATE type product

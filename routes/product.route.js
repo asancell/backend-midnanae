@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const typeproduct = require('../controllers/admin/type-product.controller')
-const product = require('../controllers/admin/product.controller')
-const wstproduct = require('../controllers/admin/wst-product.controller')
+const typeproduct = require('../controllers/admin/product/type-product.controller')
+const product = require('../controllers/admin/product/product.controller')
+const wstproduct = require('../controllers/admin/product/wst-product.controller')
 
 
 // Manage type product Api

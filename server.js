@@ -9,9 +9,11 @@ app.use(cors());
 const user = require('./routes/user.route');
 const product = require('./routes/product.route');
 const purch = require('./routes/purch.route');
+const sell = require('./routes/sell.route');
 
 app.use('/user', user);
 app.use('/product', product);
 app.use('/purch', purch );
+app.use('/sell', sell);
 // run server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

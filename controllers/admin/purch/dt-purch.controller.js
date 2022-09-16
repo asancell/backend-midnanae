@@ -1,5 +1,5 @@
 
-const db = require('../../lib/db.js');
+const db = require('../../../lib/db.js');
 
 
 // CREATE type product
@@ -37,12 +37,12 @@ module.exports.read = function (req, res) {
 }
 
 module.exports.update = function (req, res){
-    const order_product_id = req.params.wst_product_id;
-    const {employee_id, status, total_price } = req.body;
+    const detail_order_id = req.params.detail_order_id;
+    const {order_product_id, product_id, farmer_id, payment_purch_id, qty, price } = req.body;
 
     try {
-        db.query("UPDATE order_product SET employee_id = ?, date = ? , status = ?, total_price = ? WHERE order_product_id = ?", 
-        [employee_id, Date.now(), status, total_price, order_product_id], (err, results, fields) => {
+        db.query("UPDATE detail_order_product SET order_product_id = ?, product_id = ? , farmer_id = ?, payment_purch_id = ?, qty = ?, price = ? WHERE detail_order_id = ?", 
+        [order_product_id, product_id, farmer_id, payment_purch_id, qty, price , detail_order_id], (err, results, fields) => {
             if (err) {
                 console.log(err);
                 return res.status(400).send();
@@ -56,18 +56,18 @@ module.exports.update = function (req, res){
 }
 
 module.exports.delete = function (req, res){
-    const order_product_id = req.params.wst_product_id;
+    const detail_order_id = req.params.detail_order_id;
 
     try {
-        db.query("DELETE FROM order_product WHERE order_product_id = ?", [order_product_id], (err, results, fields) => {
+        db.query("DELETE FROM detail_order_product WHERE detail_order_id = ?", [detail_order_id], (err, results, fields) => {
             if (err) {
                 console.log(err);
                 return res.status(400).send();
             }
             if (results.affectedRows === 0) {
-                return res.status(404).json({ message: "No order product with that wst_product_id!"});
+                return res.status(404).json({ message: "No detail order with that detail_order_id!"});
             }
-            return res.status(200).json({ message: "order product deleted successfully!"});
+            return res.status(200).json({ message: "detail order product deleted successfully!"});
         })
     } catch(err) {
         console.log(err);

@@ -1,5 +1,5 @@
 
-const db = require('../../lib/db.js');
+const db = require('../../../lib/db.js');
 
 
 // CREATE type product
@@ -8,14 +8,14 @@ module.exports.create = function (req, res) {
 
     try {
         db.query(
-            "INSERT INTO payment_purch (type, date_payment, picture, status) VALUES(?, ?, ?, ?)",
+            "INSERT INTO payment_sell (type, date_payment, picture, status) VALUES(?, ?, ?, ?)",
             [type, Date(), picture, status],
             (err, results, fields) => {
                 if (err) {
-                    console.log("Error while inserting a payment purch into the database", err);
+                    console.log("Error while inserting a payment sell into the database", err);
                     return res.status(400).send();
                 }
-                return res.status(201).json({ message: "New payment purch successfully created!"});
+                return res.status(201).json({ message: "New payment sell successfully created!"});
             }
         )
     } catch(err) {
@@ -26,7 +26,7 @@ module.exports.create = function (req, res) {
 
 module.exports.read = function (req, res) {
     db.query(
-        "SELECT * FROM payment_purch ",
+        "SELECT * FROM payment_sell",
         (err, results) => {
             if (err) {
                 console.log(err);
