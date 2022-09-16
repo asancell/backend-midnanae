@@ -1,0 +1,11 @@
+[33mcommit 8d57eaad0936e0f6e83bd5a53c6fc12ec575c74d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: asancell <asancell364@gmail.com>
+Date:   Sat Sep 17 01:51:31 2022 +0700
+
+    add sell crud
+
+[33mcommit 7bdb11aaf9347afda29677dab864191bd244f3d2[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: asancell <asancell364@gmail.com>
+Date:   Fri Sep 16 14:30:14 2022 +0700
+
+    add purch
